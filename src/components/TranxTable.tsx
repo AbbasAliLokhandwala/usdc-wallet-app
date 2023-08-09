@@ -63,28 +63,16 @@ const columns = [
 ];
 
 function TransactionHistoryTable() {
-  const { address, transactionList, setTransactionList } =
-    useContext(WalletContext);
+  const { address, transactionList } = useContext(WalletContext);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [sizePerPage, setSizePerPage] = useState(10);
 
-  useEffect(() => {
-    const init = async () => {
-      setIsLoading(true);
-      const data = await fetchTransactionList(address, 1, 10);
-      setTransactionList(data);
-      setIsLoading(false);
-    };
-    init();
-  }, []);
-
   const onPageChange = async (page, offset) => {
     setIsLoading(true);
-    const transactions = await fetchTransactionList(address, page, offset);
+    await fetchTransactionList(address, page, offset);
     setIsLoading(false);
 
-    setTransactionList(transactions);
     setCurrentPage(page);
   };
 
