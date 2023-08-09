@@ -1,9 +1,7 @@
 import 'tailwindcss/tailwind.css'
-import { ThemeProvider } from 'next-themes'
-import Web3Provider from '@/components/Web3Provider'
 import { useContext } from 'react'
 import ConnectWallet from '@/components/ConnectWallet'
-import { WalletContext } from '@/context/AppContext'
+import { WalletContext } from '@/context/WalletContext'
 import ConnectedWalletInfo from '@/components/ConnectedInfo'
 
 const App = () => {

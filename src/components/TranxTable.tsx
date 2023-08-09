@@ -1,12 +1,12 @@
+import React, { useContext, useState, useEffect } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next'
 import filterFactory from 'react-bootstrap-table2-filter'
 // import paginationFactory from "react-bootstrap-table2-paginator";
 import formatAddress from '../utils/formatAddress'
 import { fetchTransactionList } from '../utils/api'
-import { useContext, useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
 import { Button, Input } from 'reactstrap'
-import { WalletContext } from '../context/AppContext'
+import { WalletContext } from '../context/WalletContext'
 
 const columns = [
 	{
@@ -40,11 +40,12 @@ const columns = [
 ]
 
 function TransactionHistoryTable() {
-	const [transactionList, setTransactionList] = useState([])
-	const { address } = useContext(WalletContext)
-	const [isLoading, setIsLoading] = useState(true)
-	const [currentPage, setCurrentPage] = useState(1)
-	const [sizePerPage, setSizePerPage] = useState(10)
+	
+	const { address, transactionList, setTransactionList } = useContext(WalletContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sizePerPage, setSizePerPage] = useState(10);
+
 	useEffect(() => {
 		const init = async () => {
 			setIsLoading(true)
@@ -55,13 +56,15 @@ function TransactionHistoryTable() {
 		init()
 	}, [])
 
-	const onPageChange = async (page, offset) => {
-		setIsLoading(true)
-		const data = await fetchTransactionList(address, page, offset)
-		setTransactionList(data)
-		setIsLoading(false)
-		setCurrentPage(page)
-	}
+	 const onPageChange = async (page, offset) => {
+    setIsLoading(true);
+    // Fetch transactions for the given page and offset
+    const transactions = await fetchTransactionList(address, page, offset);
+    setIsLoading(false);
+
+    setTransactionList(transactions);
+    setCurrentPage(page);
+  };
 
 	return isLoading ? (
 		<span className="m-auto mt-3" style={{ display: 'flex' }}>

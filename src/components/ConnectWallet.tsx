@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
-import { WalletContext, WalletContextType } from '../context/AppContext'
+import { WalletContext, WalletContextType } from '../context/WalletContext'
 
 const ConnectWallet = () => {
 	const { connectWallet } = useContext<WalletContextType>(WalletContext)

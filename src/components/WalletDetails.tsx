@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Col, Row } from 'reactstrap'
-import { WalletContext } from '../context/AppContext'
+import { WalletContext } from '../context/WalletContext'
 
 const WalletDetails = () => {
 	const { address, tokenBal, bal } = useContext(WalletContext)

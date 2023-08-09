@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Button, Card, CardBody } from 'reactstrap'
-import { WalletContext } from '../context/AppContext'
+import { WalletContext } from '../context/WalletContext'
 import WalletDetails from './WalletDetails'
 import TransactionHistoryTable from './TranxTable'
 const ConnectedWalletInfo = () => {

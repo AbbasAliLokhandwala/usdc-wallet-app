@@ -1,13 +1,13 @@
-import { FC } from 'react'
-import { WalletProvider } from '../context/AppContext'
-import App from './app'
+import { FC } from "react";
+import { WalletProvider } from "../context/WalletContext";
+import App from "./app";
 
 const Home: FC = () => {
-	return (
-		<WalletProvider>
-			<App />
-		</WalletProvider>
-	)
-}
+  return (
+    <WalletProvider>
+      <App />
+    </WalletProvider>
+  );
+};
 
-export default Home
+export default Home;
