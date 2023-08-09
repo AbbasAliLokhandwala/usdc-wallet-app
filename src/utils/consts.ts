@@ -13,7 +13,7 @@ export const USDC_TOKEN = {
 	name: 'USDC',
 	symbol: 'USDC',
 	decimal: 18,
-	address: '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
+	address: '0x1Ee0B336Ec36Dc260239D40d245d51fe04EE1355',
 }
 
 export const CHAIN_ID = '0x5'

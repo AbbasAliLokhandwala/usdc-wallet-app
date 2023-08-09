@@ -7,7 +7,12 @@ export const fetchTransactionList = async (
     `https://api-goerli.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=${page}&offset=${offset}&sort=desc&apikey=2G3ZRWKIQQWNVIT4D6QMN55E9ZQHSUKGPN`
   );
   const response = await data.json();
-  const transactionData = response.result.map((item: any) => ({
+console.log(response);
+  const filteredTransactions = response.result.filter(
+    (item: any) => item.to === "0x1ee0b336ec36dc260239d40d245d51fe04ee1355"
+  );
+
+  const transactionData = filteredTransactions.map((item: any) => ({
     transactionHash: item.hash,
     value: parseFloat(item.value) / 1e18,
     from: item.from,
